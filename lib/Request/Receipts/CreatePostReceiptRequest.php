@@ -239,10 +239,10 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
     /**
      * Устанавливает код системы налогообложения
      *
-     * @param int $value Код системы налогообложения. Число 1-6
+     * @param int $value Код системы налогообложения. Число 1-12
      *
      * @throws InvalidPropertyValueTypeException Выбрасывается если переданный аргумент - не число
-     * @throws InvalidPropertyValueException Выбрасывается если переданный аргумент меньше одного или больше шести
+     * @throws InvalidPropertyValueException Выбрасывается если переданный аргумент меньше 1 или больше 12
      */
     public function setTaxSystemCode($value)
     {
@@ -254,7 +254,7 @@ class CreatePostReceiptRequest extends AbstractRequest implements CreatePostRece
             );
         } else {
             $castedValue = (int)$value;
-            if ($castedValue < 1 || $castedValue > 6) {
+            if ($castedValue < 1 || $castedValue > 12) {
                 throw new InvalidPropertyValueException(
                     'Invalid taxSystemCode value: '.$value, 0, 'Receipt.taxSystemCode'
                 );
