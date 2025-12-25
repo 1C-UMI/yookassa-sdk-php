@@ -247,10 +247,9 @@ class ReceiptItem extends AbstractObject implements ReceiptItemInterface
     /**
      * Устанавливает ставку НДС
      *
-     * @param int $value Ставка НДС, число 1-6
+     * @param int $value Ставка НДС, число 1-12
      *
-     * @throws InvalidPropertyValueException Выбрасывается если в качестве аргумента было передано число меньше одного
-     * или больше шести
+     * @throws InvalidPropertyValueException Выбрасывается если в качестве аргумента было передано число меньше 1 или больше 12
      * @throws InvalidPropertyValueTypeException Выбрасывается если в качестве аргумента было передано не число
      */
     public function setVatCode($value)
@@ -261,7 +260,7 @@ class ReceiptItem extends AbstractObject implements ReceiptItemInterface
             throw new InvalidPropertyValueTypeException(
                 'Invalid vatId value type in ReceiptItem', 0, 'ReceiptItem.vatId', $value
             );
-        } elseif ($value < 1 || $value > 6) {
+        } elseif ($value < 1 || $value > 12) {
             throw new InvalidPropertyValueException(
                 'Invalid vatId value in ReceiptItem', 0, 'ReceiptItem.vatId', $value
             );
